@@ -4,7 +4,7 @@
   "description": "A team-effort dating app for @cmda-bt",
   "main": "index.js",
   "scripts": {
-    "test": "''"
+    "start": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -31,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/didiercatz/team/issues"
   },
-  "homepage": "https://github.com/didiercatz/team#readme"
+  "homepage": "https://github.com/didiercatz/team#readme",
+  "dependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
