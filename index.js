@@ -8,6 +8,8 @@ const multer = require('multer')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
+const db = require('./src/db')
+
 
 const { DB_USER, DB_PASSWORD, DB_URL, DB_NAME } = process.env
 
@@ -21,7 +23,10 @@ app
   .get('/', (req, res) => {
     res
       .status(200)
-      .render('index')
+      .render('index', {
+        name: 'Max',
+        isLoggedIn: true
+      })
   })
   .listen(port, () => {
     console.log(`App is running in ${process.env.NODE_ENV} mode on http://localhost:${port}`)
