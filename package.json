@@ -1,0 +1,35 @@
+{
+  "name": "team",
+  "version": "0.0.1",
+  "description": "A team-effort dating app for @cmda-bt",
+  "main": "index.js",
+  "scripts": {
+    "test": "''"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/didiercatz/team.git"
+  },
+  "keywords": [
+    "dating",
+    "app",
+    "progressive",
+    "enhancement",
+    "js",
+    "html",
+    "css",
+    "mongodb",
+    "cmd"
+  ],
+  "author": [
+    "Didier Catz",
+    "Zoë Severiens",
+    "Max Hauser",
+    "Sybren Molenaar"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/didiercatz/team/issues"
+  },
+  "homepage": "https://github.com/didiercatz/team#readme"
+}
