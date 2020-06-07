@@ -8,8 +8,7 @@ const multer = require('multer')
 const session = require('express-session')
 const bodyParser = require('body-parser')
 const port = process.env.PORT || 3000
-const db = require('./src/db')
-
+const { read } = require('./src/db')
 
 const { DB_USER, DB_PASSWORD, DB_URL, DB_NAME } = process.env
 
@@ -20,14 +19,21 @@ app
   .use(express.static('public'))
   .set('view engine', 'ejs')
   .set('views', 'src/views')
-  .get('/', (req, res) => {
+  .get('/', async (req, res) => {
+
+    const users = await read({
+      collection: 'users',
+      query: { age: { $lt: 23 } },
+      amount: 1
+    })
+
     res
       .status(200)
       .render('index', {
-        name: 'Max',
-        isLoggedIn: true
+        users
       })
   })
   .listen(port, () => {
     console.log(`App is running in ${process.env.NODE_ENV} mode on http://localhost:${port}`)
+    console.log('—————————————————————————————————————————————————————————')
   })
