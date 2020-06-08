@@ -77,8 +77,6 @@ app
 			query,
 		})
 
-
-		console.log(users)
 		res
 			.status(200)
 			.render('index', {
