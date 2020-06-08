@@ -15,13 +15,13 @@ const connect = async () => MongoClient
 	.catch(err => { throw err })
 
 /**
- * Read data from the database
- * @function Read
- * @param {Object} options - The options to pass to the function
- * @param {String} options.collection - The name of the collection
- * @param {{}} options.query - The query to execute on the collection
- * @param {Number} options.amount - The amount of results to return
- * @returns A promise that resolves with the data
+* Read data from the database
+* @function Read
+* @param {Object} options - The options to pass to the function
+* @param {String} options.collection - The name of the collection
+* @param {{}} options.query - The query to execute on the collection
+* @param {Number} options.amount - The amount of results to return
+* @returns A promise that resolves with the data
 */
 async function Read({ collection = '', query = {}, amount = 0 }) {
 	// Connect to the database
@@ -49,11 +49,11 @@ async function Read({ collection = '', query = {}, amount = 0 }) {
 }
 
 /**
- * Create data in the database
- * @function Create
- * @param {Object} options - The options to pass to the function
- * @param {String} options.collection - The name of the collection
- * @param {{}} options.data - The data to create
+* Create data in the database
+* @function Create
+* @param {Object} options - The options to pass to the function
+* @param {String} options.collection - The name of the collection
+* @param {{}} options.data - The data to create
 */
 async function Create({ collection = '', data = {} }) {
 	// Connect to the database
@@ -85,12 +85,12 @@ async function Create({ collection = '', data = {} }) {
 }
 
 /**
- * Update data in the database
- * @function Update
- * @param {Object} options - The options to pass to the function
- * @param {String} options.collection - The name of the collection
- * @param {{}} options.query - The query to execute on the collection
- * @param {{}} options.data - The data to update
+* Update data in the database
+* @function Update
+* @param {Object} options - The options to pass to the function
+* @param {String} options.collection - The name of the collection
+* @param {{}} options.query - The query to execute on the collection
+* @param {{}} options.data - The data to update
 */
 async function Update({
 	collection = '',
@@ -142,12 +142,12 @@ async function Update({
 }
 
 /**
- * Delete data from the database
- * @function Delete
- * @param {Object} options - The options to pass to the function
- * @param {String} options.collection - The name of the collection
- * @param {{}} options.query - The query to execute on the collection
- * @param {{}} options.data - The data to delete
+* Delete data from the database
+* @function Delete
+* @param {Object} options - The options to pass to the function
+* @param {String} options.collection - The name of the collection
+* @param {{}} options.query - The query to execute on the collection
+* @param {{}} options.data - The data to delete
 */
 async function Delete({ collection = '', query = {}, data = {}, singe = true }) {
 	// Connect to the database
