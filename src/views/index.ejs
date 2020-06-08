@@ -4,5 +4,10 @@
 
   <body>
     <h1>Hello world</h1>
+    <ul>
+      <% users.forEach(user => { %>
+      <li><%- user.name %></li>
+      <% }) %>
+    </ul>
   </body>
 </html>
