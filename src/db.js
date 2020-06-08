@@ -95,7 +95,8 @@ async function Create({ collection = '', data = {} }) {
 async function Update({
 	collection = '',
 	query = {},
-	data = {}
+	data = {},
+	single = true
 }) {
 
 	// Check if data is not empty
@@ -109,7 +110,7 @@ async function Update({
 	try {
 
 		// Check if data is an arroy or an object
-		if (Array.isArray(data) === true) {
+		if (single !== true) {
 			await client.db(DB_NAME)
 				.collection(collection)
 				.updateMany(query, {
@@ -148,14 +149,14 @@ async function Update({
  * @param {{}} options.query - The query to execute on the collection
  * @param {{}} options.data - The data to delete
 */
-async function Delete({ collection = '', query = {}, data = {} }) {
+async function Delete({ collection = '', query = {}, data = {}, singe = true }) {
 	// Connect to the database
 	const client = await connect()
 
 	try {
 
 		// Check if data is an arroy or an object
-		if (Array.isArray(data) === true) {
+		if (single !== true) {
 			await client.db(DB_NAME)
 				.collection(collection)
 				// .find(query)
