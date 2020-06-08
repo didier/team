@@ -24,7 +24,7 @@ app
 		const users = await Read({
 			collection: 'users',
 			query: { age: { $lt: 23 } },
-			amount: 1
+			amount: 0
 		})
 
 		res

@@ -84,7 +84,6 @@ async function Create({ collection = '', data = {} }) {
 	}
 }
 
-
 /**
  * Update data in the database
  * @function Update
@@ -141,7 +140,6 @@ async function Update({
 	}
 }
 
-
 /**
  * Delete data from the database
  * @function Delete
@@ -184,4 +182,9 @@ async function Delete({ collection = '', query = {}, data = {} }) {
 	}
 }
 
-module.exports = { Create, Read, Update, Delete }
+module.exports = {
+	Create,
+	Read,
+	Update,
+	Delete
+}
