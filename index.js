@@ -33,7 +33,6 @@ app
 
 		const query = req.body || {}
 
-		console.log(query)
 
 		const users = await Read({
 			collection: 'users',
@@ -49,12 +48,14 @@ app
 
 	.post('/', async (req, res) => {
 
-		const response = req.body || {}
+		if (!req.body) {
+			res.redirect('/')
+			return
+		}
 
-		const age = parseInt(req.body.age);
-		const orientation = req.body.orientation;
-
-		console.log('Orientation:', orientation)
+		const response = req.body
+		const age = parseInt(response.age)
+		const orientation = response.orientation;
 
 		const query = {
 			$and: [
@@ -70,7 +71,6 @@ app
 				}
 			]
 		}
-		console.log(JSON.stringify(query))
 
 		const users = await Read({
 			collection: 'users',
@@ -105,4 +105,5 @@ app
 	.listen(port, () => {
 		console.log(`App is running in ${process.env.NODE_ENV} mode on http://localhost:${port}`)
 		console.log('—————————————————————————————————————————————————————————')
+
 	})
