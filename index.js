@@ -33,6 +33,16 @@ app
 				users
 			})
 	})
+	.get('/login', (req, res) => { 
+		 res.status(200).render('login')
+	})
+	.post('/login', async(req, res) => {
+		const data = req.body
+				
+		console.log(data)
+
+		await Read({})
+	})
 	.post('/add', async (req, res) => {
 		const data = req.body
 
