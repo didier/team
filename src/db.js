@@ -124,7 +124,7 @@ async function Update({
 				})
 		}
 
-		console.log(`Set data to ${data}`)
+		console.log(`Set data to ${JSON.stringify(data)}`)
 
 		// Return the response
 		return
