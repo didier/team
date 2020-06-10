@@ -20,7 +20,7 @@ app
 	.use( session({"secret": "vdjifvjdiovjodjvodjfvjodivo"}))
 	.set('view engine', 'ejs')
 	.set('views', 'src/views')
-	.get('/', check_session, async (req, res) => {
+	.get('/', validateSession, async (req, res) => {
 
 		const users = await Read({
 			collection: 'users',
@@ -59,10 +59,9 @@ app
 			}
 		})
 
-		console.log('Results:', results[0])
 
-		req.session.user = {id: results[0]._id, email: results[0].email, age: results[0].age, gender: results[0].gender, orientation: results[0].orientation};
-		console.log("Session-data:")
+		req.session.user = { ...results[0] };
+		console.log('Session-data:')
 		console.log(req.session.user)
 
 		if (results.length === 0) {
@@ -71,7 +70,7 @@ app
 		}
 
 		bcrypt.compare(data.pass, results[0].pass, (err, result) => {
-			console.log(result)
+			console.log('Results:', result)
 
 			if (err) { throw err }
 
@@ -153,7 +152,7 @@ app
 
 
 
-function check_session(req, res, next) {
+function validateSession(req, res, next) {
 	if(req.session.user){
 		next()
 	}else{
