@@ -13,7 +13,6 @@
 		"color-hex-case": null,
 		"no-descending-specificity": null,
 		"at-rule-no-unknown": null,
-		"function-calc-no-invalid": true,
 		"property-no-unknown": [
 			true,
 			ignoreProperties: [
