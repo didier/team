@@ -12,6 +12,7 @@ const { Read, Create } = require('./src/db')
 const bcrypt = require('bcrypt')
 const { DB_USER, DB_PASSWORD, DB_URL, DB_NAME, SESSION_KEY} = process.env
 
+
 const URI = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_URL}/${DB_NAME}?retryWrites=true&w=majority`
 
 app
@@ -22,10 +23,12 @@ app
 	.set('views', 'src/views')
 	.get('/', validateSession, async (req, res) => {
 
+		const query = req.body || {}
+
+
 		const users = await Read({
 			collection: 'users',
-			query: { age: { $lt: 23 } },
-			amount: 0
+			query: query
 		})
 
 		res
@@ -125,6 +128,45 @@ app
 
 		console.log(user)
 	})
+
+	.post('/', async (req, res) => {
+
+		if (!req.body) {
+			res.redirect('/')
+			return
+		}
+
+		const response = req.body
+		const age = parseInt(response.age)
+		const orientation = response.orientation;
+
+		const query = {
+			$and: [
+				{
+					age: {
+						$lte: age
+					}
+				},
+				orientation === 'x' ? {} : {
+					gender: {
+						$eq: orientation
+					}
+				}
+			]
+		}
+
+		const users = await Read({
+			collection: 'users',
+			query,
+		})
+
+		res
+			.status(200)
+			.render('index', {
+				users
+			})
+	})
+
 	.post('/add', async (req, res) => {
 		const data = req.body
 
@@ -139,15 +181,14 @@ app
 
 		res.status(200).render('add')
 	})
-
 	.post('/logout', (req, res) => {
 		req.session.destroy();
 		res.redirect('/login')
 	})
-
 	.listen(port, () => {
 		console.log(`App is running in ${process.env.NODE_ENV} mode on http://localhost:${port}`)
 		console.log('—————————————————————————————————————————————————————————')
+
 	})
 
 
