@@ -34,10 +34,10 @@ const postIndex = async (req, res) => {
 			orientation === 'x'
 				? {}
 				: {
-						gender: {
-							$eq: orientation,
-						},
-				  },
+					gender: {
+						$eq: orientation,
+					},
+				},
 		],
 	}
 
@@ -50,4 +50,5 @@ const postIndex = async (req, res) => {
 		users,
 	})
 }
+
 module.exports = { getIndex, postIndex }
