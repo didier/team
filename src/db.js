@@ -4,26 +4,40 @@ require('dotenv').config()
 // Require packages
 const MongoClient = require('mongodb').MongoClient
 
-const { DB_USER, DB_PASSWORD, DB_URL, DB_NAME } = process.env
+const {
+	DB_USER,
+	DB_PASSWORD,
+	DB_URL,
+	DB_NAME
+} = process.env
 
 // Construct URI based on `.env`
 const URI = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_URL}/${DB_NAME}?retryWrites=true&w=majority`
 
 
 const connect = async () => MongoClient
-	.connect(URI, { useNewUrlParser: true, useUnifiedTopology: true })
-	.catch(err => { throw err })
+	.connect(URI, {
+		useNewUrlParser: true,
+		useUnifiedTopology: true
+	})
+	.catch(err => {
+		throw err
+	})
 
 /**
-* Read data from the database
-* @function Read
-* @param {Object} options - The options to pass to the function
-* @param {String} options.collection - The name of the collection
-* @param {{}} options.query - The query to execute on the collection
-* @param {Number} options.amount - The amount of results to return
-* @returns A promise that resolves with the data
-*/
-async function Read({ collection = '', query = {}, amount = 0 }) {
+ * Read data from the database
+ * @function Read
+ * @param {Object} options - The options to pass to the function
+ * @param {String} options.collection - The name of the collection
+ * @param {{}} options.query - The query to execute on the collection
+ * @param {Number} options.amount - The amount of results to return
+ * @returns A promise that resolves with the data
+ */
+async function Read({
+	collection = '',
+	query = {},
+	amount = 0
+}) {
 	// Connect to the database
 	const client = await connect()
 
@@ -49,13 +63,16 @@ async function Read({ collection = '', query = {}, amount = 0 }) {
 }
 
 /**
-* Create data in the database
-* @function Create
-* @param {Object} options - The options to pass to the function
-* @param {String} options.collection - The name of the collection
-* @param {{}} options.data - The data to create
-*/
-async function Create({ collection = '', data = {} }) {
+ * Create data in the database
+ * @function Create
+ * @param {Object} options - The options to pass to the function
+ * @param {String} options.collection - The name of the collection
+ * @param {{}} options.data - The data to create
+ */
+async function Create({
+	collection = '',
+	data = {}
+}) {
 	// Connect to the database
 	const client = await connect()
 
@@ -85,13 +102,13 @@ async function Create({ collection = '', data = {} }) {
 }
 
 /**
-* Update data in the database
-* @function Update
-* @param {Object} options - The options to pass to the function
-* @param {String} options.collection - The name of the collection
-* @param {{}} options.query - The query to execute on the collection
-* @param {{}} options.data - The data to update
-*/
+ * Update data in the database
+ * @function Update
+ * @param {Object} options - The options to pass to the function
+ * @param {String} options.collection - The name of the collection
+ * @param {{}} options.query - The query to execute on the collection
+ * @param {{}} options.data - The data to update
+ */
 async function Update({
 	collection = '',
 	query = {},
@@ -142,14 +159,19 @@ async function Update({
 }
 
 /**
-* Delete data from the database
-* @function Delete
-* @param {Object} options - The options to pass to the function
-* @param {String} options.collection - The name of the collection
-* @param {{}} options.query - The query to execute on the collection
-* @param {{}} options.data - The data to delete
-*/
-async function Delete({ collection = '', query = {}, data = {}, singe = true }) {
+ * Delete data from the database
+ * @function Delete
+ * @param {Object} options - The options to pass to the function
+ * @param {String} options.collection - The name of the collection
+ * @param {{}} options.query - The query to execute on the collection
+ * @param {{}} options.data - The data to delete
+ */
+async function Delete({
+	collection = '',
+	query = {},
+	data = {},
+	singe = true
+}) {
 	// Connect to the database
 	const client = await connect()
 
