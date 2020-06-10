@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 
-		<%- include ("./partials/head") %>
+  <%- include ("./partials/head") %>
+    
   <body>
 
     <main>
@@ -11,8 +12,13 @@
         <li><%- user.name %></li>
         <% }) %>
       </ul>
+      
+      
+      <form action="/logout" method="POST">
+        <button type="submit">Logout</button>
+      </form>
+      
     </main>
-
 		<%- include ("./partials/filter") %>
   </body>
 </html>
