@@ -1,6 +1,6 @@
 # Dating App
 
-_A dating app assignment for @cmda-bt Blok Tech with @max-hauser, @sybrenmolenaar, @zoeseveriens and @didiercatz_
+_A dating app assignment for @cmda-bt Blok Tech with [@max-hauser](https://github.com/max-hauser), [@sybrenmolenaar](https://github.com/sybrenmolenaar), [@zoeseveriens](https://github.com/zoeseveriens) and [@didiercatz](https://github.com/didiercatz)_
 
 ## Installing
 
