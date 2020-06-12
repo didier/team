@@ -43,7 +43,7 @@ const isLoggedIn = true;
 const hasUserLoggedIn = true;
 ```
 
-## Hooks, Linting and Formatting
+## Linting and Formatting
 
 ### ESLint
 
