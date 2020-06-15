@@ -1,4 +1,3 @@
-import { Session } from 'express-session';
 require('dotenv').config()
 
 const express = require('express')
