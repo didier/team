@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%- include ("./partials/head") %>
+
+	<h1>Your profile page</h1>
+
+	<h2>About me</h2>
+	<p></p>
+
+		<h2>Interests</h2>
+		<ul>
+		<% for (var index = 0; index < data.length; index++) { %>
+
+					<li><%= data[index].interest %></li>
+					<% } %>
+		</ul>
+
+ <a href="/edit-profile-page">edit profile</a>
+  </body>
+</html>

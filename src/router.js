@@ -16,6 +16,8 @@ function validateSession(req, res, next) {
 
 router
 	.get('/', validateSession, getIndex)
+	.get ('/profile-page', getProfilePage)
+	.get ('/edit-profile-page', getEditProfilePage)
 	.get('/login', getLogin)
 	.post('/login', postLogin)
 	.get('/signup', getSignup)

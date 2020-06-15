@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include ("./partials/head") %>
+
+  <body>
+		<h1>Your profile page</h1>
+
+
+		<form method="POST" action="/account">
+			<label>Tell something about yourself</label>
+			<textarea name="about" id="about" cols="30" rows="10"></textarea>
+			<label>What are some of your interests?</label>
+			<input type="text" name="interest">
+			<input class="add-button" type="submit" value="add">
+	</form>
+	<button><a href="/account">Cancel</a></button>
+  </body>
+</html>
