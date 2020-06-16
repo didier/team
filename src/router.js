@@ -3,6 +3,8 @@ const router = require('express').Router()
 const { getIndex, postIndex } = require('./routes/index')
 const { getLogin, postLogin } = require('./routes/login')
 const { getSignup, postSignup } = require('./routes/signup')
+const { getProfilePage } = require('./routes/profile')
+const { getEditProfilePage } = require('./routes/edit-profile')
 const { postAdd } = require('./routes/add')
 const { postLogout } = require('./routes/logout')
 
