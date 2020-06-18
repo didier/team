@@ -2,7 +2,7 @@
 <html lang="en">
 
   <%- include ("./partials/head") %>
-    
+
   <body>
 
     <main>
@@ -12,12 +12,13 @@
         <li><%- user.name %></li>
         <% }) %>
       </ul>
-      
-      
+
+
       <form action="/logout" method="POST">
         <button type="submit">Logout</button>
-      </form>
-      
+			</form>
+			<a href="/profile-page">View profile</a>
+
     </main>
 		<%- include ("./partials/filter") %>
   </body>
