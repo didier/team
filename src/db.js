@@ -95,16 +95,14 @@ async function Update({ collection = '', query = {}, data = {}, single = true })
 	try {
 		// Check if data is an arroy or an object
 		if (single !== true) {
-			await client.db(DB_NAME).collection(collection).updateMany(query, {
-				$set: data,
-			})
+			await client.db(DB_NAME).collection(collection).updateMany(query, data)
 		} else {
-			await client.db(DB_NAME).collection(collection).updateOne(query, {
-				$set: data,
-			})
+			await client.db(DB_NAME).collection(collection).updateOne(query, data)
 		}
 
-		console.log(`Set data to ${JSON.stringify(data)}`)
+		if (process.env.NODE_ENV === 'debug') {
+			console.log(`Set data to ${JSON.stringify(data)}`)
+		}
 
 		// Return the response
 		return

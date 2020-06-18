@@ -3,17 +3,39 @@
   <%- include ("./partials/head") %>
 
   <body>
+    <header>
+      <div class="participant">
+        <div class="name"></div>
+        <div class="status"></div>
+      </div>
+    </header>
     <main>
-      <h1>Hello world</h1>
-      <ul>
-        <% users.forEach(user => { %>
-        <li><%- user.name %></li>
+      <div class="chat-window">
+        <% chats.forEach(chat => { %> <% if (chat.userId === loggedInUser._id) { %>
+					<div class="chat-message sent">
+						<p><%= loggedInUser.firstName %>: <%= chat.message %></p>
+				<% } else { %>
+				<div class="chat-message received">
+          <p><%= user.firstName %>: <%= chat.message %></p>
+				<% } %>
+        </div>
         <% }) %>
-      </ul>
 
-      <form action="/logout" method="POST">
-        <button type="submit">Logout</button>
+        <div class="chat-indicator"></div>
+      </div>
+      <form action="/chat/<%= user._id %>/new">
+        <input
+          type="text"
+          id="message"
+          name="message"
+          placeholder="Your message"
+        />
+        <input type="hidden" id="room-id" value="<%= roomId %>" />
+        <input type="hidden" id="user-id" value="<%= loggedInUser._id %>" />
+        <button type="submit">Send</button>
       </form>
     </main>
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/js/chat.js"></script>
   </body>
 </html>
