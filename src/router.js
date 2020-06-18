@@ -16,11 +16,11 @@ function validateSession(req, res, next) {
 
 router
 	.get('/', validateSession, getIndex)
+	.post('/', postIndex)
 	.get('/login', getLogin)
 	.post('/login', postLogin)
 	.get('/signup', getSignup)
 	.post('/signup', postSignup)
-	.post('/', postIndex)
 	.post('/add', postAdd)
 	.post('/logout', postLogout)
 

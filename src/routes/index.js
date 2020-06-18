@@ -1,18 +1,26 @@
-const { Read } = require('../db')
+const {
+	Read
+} = require('../db')
 
 const getIndex = async (req, res) => {
 	const query = req.body || {}
+	// console.log('Logged in user:', req.session)
+	const loggedInUser = req.session.user
+
+	res.cookie('user', loggedInUser)
 
 	const users = await Read({
 		collection: 'users',
-		query: query,
+		query: query
 	})
 
 	res.status(200).render('index', {
 		users,
+		user: loggedInUser,
 		title: 'Dating App',
 	})
 }
+
 
 const postIndex = async (req, res) => {
 	if (!req.body) {
@@ -20,26 +28,43 @@ const postIndex = async (req, res) => {
 		return
 	}
 
-	const response = req.body
-	const age = parseInt(response.age)
-	const orientation = response.orientation
+	const user = req.cookies.user
+	console.log('Cookie: ', user)
+	// console.log(req.session)
+
+	// Search Functionality
+	const searchQuery = req.body
+	searchQuery.age = parseInt(searchQuery.age)
+	console.log('response: ', searchQuery)
+
+	// Add functionality to like & dislike users
+
+	if(searchQuery.like === 'false'){
+		console.log('add userID to disliked')
+	}else{
+		console.log('add userID to liked')
+	}
 
 	const query = {
 		$and: [
+			user.liked && {
+				_id: {
+					$nin: [...req.session.user.liked]
+				}
+			},
 			{
 				age: {
-					$lte: age,
+					$lte: searchQuery.age,
 				},
 			},
-			orientation === 'x'
-				? {}
-				: {
-						gender: {
-							$eq: orientation,
-						},
-				  },
+			searchQuery.orientation === 'x' ? {} : {
+				gender: {
+					$eq: searchQuery.orientation,
+				},
+			},
 		],
 	}
+
 
 	const users = await Read({
 		collection: 'users',
@@ -48,6 +73,10 @@ const postIndex = async (req, res) => {
 
 	res.status(200).render('index', {
 		users,
+		user
 	})
 }
-module.exports = { getIndex, postIndex }
+module.exports = {
+	getIndex,
+	postIndex
+}
