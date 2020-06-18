@@ -39,9 +39,16 @@ const postIndex = async (req, res) => {
 
 	// Add functionality to like & dislike users
 
-	if(searchQuery.like === 'false'){
+	if (searchQuery.like === 'false') {
 		console.log('add userID to disliked')
-	}else{
+		/* update Update({ collection = '', query = {}, data = {}, single = true }) */
+		/* update disliked = ID of (disliked person) WHERE _ID === req.session.user.id */
+
+
+
+		Update('users', query, data, true)
+
+	} else {
 		console.log('add userID to liked')
 	}
 
