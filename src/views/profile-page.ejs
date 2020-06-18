@@ -2,16 +2,27 @@
 <html lang="en">
 	<%- include ("./partials/head") %>
 
-	<h1>Welcome back to your profile (name)</h1>
+	<h1>Welcome back to your profile <%= user.firstName %> <%= user.lastName %></h1>
 
+	<form method="POST" action="/profile-page">
+		<label for="name">firstame</label>
+		<input type="text" name="firstName" id="firstName" value="<%= user.firstName %>">
+		<label for="name">lastname</label>
+		<input type="text" name="lastName" id="lastName" value="<%= user.lastName %>">
+		<label for="age">Age</label>
+		<input type="number" name="age" id="age" value="<%= user.age %>" >
+		<label for="age">Gender</label>
+		<input type="text" name="gender" id="gender" value="<%= user.gender %>" >
+		<h2>Tell something about yourself</h1>
+		<label for="bio">Bio</label>
+		<!-- <textarea name="bio" id="bio" value="<%= user.bio %>" cols="30" rows="2"></textarea> -->
+		<input type="text" name="bio" id="bio" value="<%= user.bio %>">
+		<h2>What are some of your interests?</h1>
+		<label for="interest">1</label>
+		<input type="text" name="interest" id="interest" value="<%= user.interest %>">
+		<input type="submit" value="save">
+</form>
 
-
-
-
-	<h2>About me</h2>
-	<p>hi</p>
-
-
- <a href="/edit-profile-page">edit profile</a>
+ <a href="/">Back to home</a>
   </body>
 </html>
