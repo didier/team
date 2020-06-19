@@ -1,3 +1,4 @@
+// Server side chat function
 
 const { Create, Read } = require('../db')
 const { ObjectId } = require('mongodb')
@@ -13,8 +14,8 @@ const getChat = async (req, res) => {
 
 	const roomId = [req.session.user._id, req.params.userId].sort().toString().replace(',', '')
 
-
 	console.log('roomId :>>', roomId);
+
 	const chatData = await Read({
 		collection: 'chats',
 		query: { _id: roomId }

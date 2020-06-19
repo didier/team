@@ -15,7 +15,7 @@
   "globals": {},
   "extends": ["plugin:prettier/recommended", "eslint:recommended"],
   "rules": {
-    "semi": [2, "never"],
+    "semi": [0, "never"],
     "brace-style": [
       2,
       "1tbs",

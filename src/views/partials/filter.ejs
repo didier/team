@@ -1,43 +1,36 @@
 <aside class="filter">
-	<h2>This is the filter</h2>
+  <form action="/" method="POST">
+    <fieldset>
+      <label for="age">Age</label>
+      <br />
+      <input type="number" name="age" id="age" min="18" max="100" value="24" />
+    </fieldset>
 
-		<form action="/" method="POST">
+    <fieldset>
+			<legend>Sexual Orientation</legend>
+			<label for="orientation">I'm looking for...</label>
+			<select name="orientation" id="orientation">
+				<option value="m">Men</option>
+				<option value="f">Women</option>
+				<option value="x">Both</option>
+			</select>
+      <!-- <label for="male">
+				<input type="radio" id="male" name="orientation" value="m" />
 
-			<fieldset>
-				<legend>Maximum age</legend>
-				<label for="age">Age</label>
-				<br>
-				<input type="number" name="age" id="age" min="18" max="100" value="24">
-			</fieldset>
+				Male
+			</label>
 
-			<fieldset>
-				<legend>I'm looking for</legend>
-				<input type="radio" id="male" name="orientation" value="m">
-				<label for="male">Male</label>
-				<br>
-				<input type="radio" id="female" checked name="orientation" value="f">
-				<label for="female">Female</label>
+      <label for="female">
+				<input type="radio" id="female" checked name="orientation" value="f" />
+				Female
+			</label>
 
-				<input type="radio" id="both" checked name="orientation" value="x">
-				<label for="both">Both</label>
-			</fieldset>
+      <label for="both">
+				<input type="radio" id="both" checked name="orientation" value="x" />
+				Both
+			</label> -->
+    </fieldset>
 
-			<button type="submit">Filter</button>
-
-		</form>
+    <button type="submit">Filter</button>
+  </form>
 </aside>
-
-
-<style>
-	aside.filter{
-		max-width: 30vw;
-		height: 50vh;
-		position: absolute;
-		right: 50vw;
-		top: 0;
-	}
-
-	aside input{
-		margin: 10px 0px;
-	}
-</style>
