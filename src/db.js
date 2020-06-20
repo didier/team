@@ -88,10 +88,8 @@ async function Update({ collection = '', query = {}, data = {}, single = true })
 	if (!data || data === {}) {
 		throw new Error(`Can't update data with empty data. If you want to remove data, use the delete function.`)
 	}
-
 	// Connect to the database
 	const client = await connect()
-
 	try {
 		// Check if data is an arroy or an object
 		if (single !== true) {
@@ -99,11 +97,9 @@ async function Update({ collection = '', query = {}, data = {}, single = true })
 		} else {
 			await client.db(DB_NAME).collection(collection).updateOne(query, data)
 		}
-
 		if (process.env.NODE_ENV === 'debug') {
 			console.log(`Set data to ${JSON.stringify(data)}`)
 		}
-
 		// Return the response
 		return
 	} catch (err) {

@@ -1,4 +1,7 @@
-const { Read, Create } = require('../db')
+const {
+	Read,
+	Create
+} = require('../db')
 const bcrypt = require('bcrypt')
 
 const getSignup = (req, res) => {
@@ -11,12 +14,36 @@ const getSignup = (req, res) => {
 const postSignup = async (req, res) => {
 	const data = req.body
 	data.age = parseInt(data.age)
+	const {
+		email,
+		firstName,
+		lastName,
+		age,
+		gender,
+		orientation
+	} = data
+
+	const user = {
+		email,
+		firstName,
+		lastName,
+		age,
+		gender,
+		pass: '',
+		filter: {
+			orientation,
+			maxAge: age + 5
+		},
+		liked: [],
+		disliked: []
+	}
+
 
 	const doesUserExist = await Read({
 		collection: 'users',
 		query: {
 			email: {
-				$eq: data.email,
+				$eq: user.email,
 			},
 		},
 	})
@@ -30,15 +57,18 @@ const postSignup = async (req, res) => {
 	}
 
 	bcrypt.hash(data.pass, 10, async (err, hash) => {
-		data.pass = hash
+		user.pass = hash
 
 		await Create({
 			collection: 'users',
-			data,
+			data: user,
 		})
 	})
 
 	res.status(200).redirect('/')
 }
 
-module.exports = { getSignup, postSignup }
+module.exports = {
+	getSignup,
+	postSignup
+}
