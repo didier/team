@@ -20,8 +20,8 @@ const postLogin = async (req, res) => {
 	})
 
 	req.session.user = { ...results[0] }
-	console.log('Session-data:')
-	console.log(req.session.user)
+	// console.log('Session-data:')
+	// console.log(req.session.user)
 
 	if (results.length === 0) {
 		res.render('login', {
@@ -32,7 +32,7 @@ const postLogin = async (req, res) => {
 	}
 
 	bcrypt.compare(data.pass, results[0].pass, (err, result) => {
-		console.log('Results:', result)
+		// console.log('Results:', result)
 
 		if (err) {
 			throw err

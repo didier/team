@@ -1,25 +1,25 @@
-
 <section>
 	<h2>Match</h2>
 
 	<% users.forEach(user => { %>
-		<article>
-			<img src="" alt="">
+	<article>
+		<img src="" alt="" />
 
-			<p class="description">
-				Hi my name is <%= user.firstName %>, I'm <%= user.age %> years old and I like <%= user.filter.orientation.toUpperCase() %>
-			</p>
+		<p class="description">
+			Hi my name is <%= user.firstName %>, I'm <%= user.age %> years old and I like <%=
+			user.filter.orientation.toUpperCase() %>
+		</p>
 
-			<div>
-				<form action="/" method="POST">
-					<input type="hidden" name="like" value="false">
-					<button type="submit">Dislike</button>
-				</form>
-				<form action="/" method="POST">
-					<input type="hidden" name="like" value="true">
-					<button type="submit">Like</button>
-				</form>
-			</div>
-		</article>
+		<div>
+			<form action="/match/<%= user._id%>" method="POST">
+				<input type="hidden" name="like" value="false" />
+				<button type="submit">Dislike</button>
+			</form>
+			<form action="/match/<%= user._id%>" method="POST">
+				<input type="hidden" name="like" value="true" />
+				<button type="submit">Like</button>
+			</form>
+		</div>
+	</article>
 	<% }) %>
 </section>
