@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include ("./partials/head") %>
+
+<body>
+
+	<main class="container-lg">
+		<% if (locals.signUp) { %>
+			<form action="/signup" method="POST">
+				<fieldset>
+					<h1>Create Account</h1>
+				<% } else { %>
+					<form action="/login" method="POST">
+					<fieldset>
+						<h1>Log In</h1>
+					<% } %>
+						<label for="email">E-mail</label>
+						<input required type="email" name="email" id="email" placeholder="your@email.com">
+						<% if (locals.errorMessage) { %>
+						<span style="color: red;"><%- errorMessage  %> </span>
+						<% } %>
+
+						<label for="passord">Password</label>
+						<input required type="password" name="pass" id="password" placeholder="Type something secure...">
+					</fieldset>
+					<br>
+
+					<% if (locals.signUp) { %>
+					<fieldset>
+						<legend>Name</legend>
+						<label for="firstName">First Name</label>
+						<input required type="text" name="firstName" id="firstName" placeholder="John">
+						<label for="lastName">Last Name</label>
+						<input required type="text" name="lastName" id="lastName" placeholder="Doe">
+					</fieldset>
+
+					<fieldset>
+						<legend>Personal Info</legend>
+
+						<label for="age">Age</label>
+						<input required type="number" name="age" id="age" min="18" max="130" placeholder="25">
+						<label for="gender">Gender</label>
+						<select required name="gender" id="gender">
+							<option value="">Please select your gender...</option>
+							<option value="m">Male</option>
+							<option value="f">Female</option>
+							<option value="x">Prefer not to say / Non-binary</option>
+						</select>
+					</fieldset>
+					<br>
+
+					<fieldset>
+						<legend>Sexual Preference</legend>
+						<label for="orientation">I'm looking for...</label>
+						<select required name="orientation" id="orientation">
+							<option value="">Please select your preference...</option>
+							<option value="m">Male</option>
+							<option value="f">Female</option>
+							<option value="x">Both</option>
+						</select>
+					</fieldset>
+					<br>
+
+
+					<fieldset>
+						<h2>Please tell us something about yourself.</h2>
+						<label for="bio">Bio</label>
+						<textarea required name="bio" id="bio" cols="30" rows="3" placeholder="I'm awesome."></textarea>
+					</fieldset>
+
+					<fieldset class="interests">
+						<h2>What are some of your interests?</h2>
+						<label for="interest">I like</label>
+						<input
+							required
+							type="text"
+							name="interest"
+							id="interest"
+							value=""
+							placeholder="Sports, video games, etc..."
+						/>
+						<input
+							type="text"
+							name="interest"
+							id="interest"
+							value=""
+							placeholder="Sports, video games, etc..."
+						/>
+						<input
+							type="text"
+							name="interest"
+							id="interest"
+							value=""
+							placeholder="Sports, video games, etc..."
+						/>
+					</fieldset>
+					<% } %>
+
+					<button type="submit">Submit</button>
+					<br>
+				</form>
+			</main>
+
+		<% if (locals.signUp) { %>
+			<footer class="breadcrumb"><a href="/login">&lt;- I already have an account.</a></footer>
+			<% }  else {%>
+				<footer class="breadcrumb"><a href="/signup">I don't have an account yet. -&gt;</a></footer>
+			<% }  %>
+
+</body>
+
+</html>

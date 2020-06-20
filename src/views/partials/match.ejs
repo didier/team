@@ -1,0 +1,28 @@
+<section>
+	<h2>Users</h2>
+
+	<% users.forEach(user => { %>
+	<article class="user">
+		<img src="" alt="" />
+
+		<p class="description">
+			<h3><%= user.firstName %>, <%= user.age %>  </h3>
+			<blockquote>
+				<%= user.bio %>
+				Lorem ipsum dolor sit amet consectetur, adipisicing elit. Amet ea nam velit tempora, cupiditate soluta, alias aut adipisci, ullam voluptas nostrum veritatis veniam voluptates. Expedita inventore fugiat explicabo! Fugiat, deserunt!
+			</blockquote>
+		</p>
+
+		<div class="button-group">
+			<form action="/match/<%= user._id%>" method="POST">
+				<input type="hidden" name="like" value="false" />
+				<button type="submit dislike">Dislike</button>
+			</form>
+			<form action="/match/<%= user._id%>" method="POST">
+				<input type="hidden" name="like" value="true" />
+				<button type="submit like">Like</button>
+			</form>
+		</div>
+	</article>
+	<% }) %>
+</section>

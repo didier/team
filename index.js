@@ -2,52 +2,29 @@ require('dotenv').config()
 
 const express = require('express')
 const app = express()
-const ejs = require('ejs')
-const io = require('socket.io')
-const multer = require('multer')
 const session = require('express-session')
 const bodyParser = require('body-parser')
-const port = process.env.PORT || 3000
-const { Read, Create } = require('./src/db')
+const cookieParser = require('cookie-parser')
+const router = require('./src/router')
 
-const { DB_USER, DB_PASSWORD, DB_URL, DB_NAME } = process.env
-
-const URI = `mongodb+srv://${DB_USER}:${DB_PASSWORD}@${DB_URL}/${DB_NAME}?retryWrites=true&w=majority`
+const { PORT, NODE_ENV, SESSION_SECRET } = process.env
+const port = PORT || 3000
 
 app
 	.use(express.static('public'))
 	.use(bodyParser.urlencoded({ extended: true }))
+	.use(cookieParser())
+	.use(session({ secret: SESSION_SECRET }))
 	.set('view engine', 'ejs')
 	.set('views', 'src/views')
-	.get('/', async (req, res) => {
+	.use(router)
 
-		const users = await Read({
-			collection: 'users',
-			query: { age: { $lt: 23 } },
-			amount: 0
-		})
 
-		res
-			.status(200)
-			.render('index', {
-				users
-			})
-	})
-	.post('/add', async (req, res) => {
-		const data = req.body
+const server = app.listen(port, () => {
+	console.log(`App is running in ${NODE_ENV} mode on http://localhost:${port}`)
+	console.log('—————————————————————————————————————————————————————————')
+})
 
-		if (data) {
-			console.log(data)
-		}
-
-		await Create({
-			collection: 'users',
-			data
-		})
-
-		res.status(200).render('add')
-	})
-	.listen(port, () => {
-		console.log(`App is running in ${process.env.NODE_ENV} mode on http://localhost:${port}`)
-		console.log('—————————————————————————————————————————————————————————')
-	})
+// set up socket.io
+const io = require('socket.io')(server)
+require('./src/socket')(io);
