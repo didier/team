@@ -2,9 +2,10 @@
 <html lang="en">
 	<%- include ("./partials/head") %>
 
+
 	<h1>Welcome back to your profile <%= user.firstName %> <%= user.lastName %></h1>
 
-	<form method="POST" action="/profile-page">
+	<form method="POST" action="/profile-page" class="profile-form">
 		<label for="name">firstame</label>
 		<input type="text" name="firstName" id="firstName" value="<%= user.firstName %>">
 		<label for="name">lastname</label>
