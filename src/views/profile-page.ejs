@@ -15,10 +15,13 @@
 		<input type="text" name="gender" id="gender" value="<%= user.gender %>" >
 		<h2>Tell something about yourself</h1>
 		<label for="bio">Bio</label>
-		<!-- <textarea name="bio" id="bio" value="<%= user.bio %>" cols="30" rows="2"></textarea> -->
-		<input type="text" name="bio" id="bio" value="<%= user.bio %>">
+		<textarea name="bio" id="bio" cols="30" rows="2"><%= user.bio %></textarea>
 		<h2>What are some of your interests?</h1>
 		<label for="interest">1</label>
+		<input type="text" name="interest" id="interest" value="<%= user.interest %>">
+		<label for="interest">2</label>
+		<input type="text" name="interest" id="interest" value="<%= user.interest %>">
+		<label for="interest">3</label>
 		<input type="text" name="interest" id="interest" value="<%= user.interest %>">
 		<input type="submit" value="save">
 </form>
