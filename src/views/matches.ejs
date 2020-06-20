@@ -1,0 +1,17 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+
+	<body>
+		<main>
+			 Lijst van users
+
+			<h2>Lijst van matches</h2>
+		</main>
+	</body>
+</html>-->
+
+<h2>Lijst van matches</h2>
+<% users.forEach(user => { %>
+	<li><%- user.firstName %></li>
+	<% }) %>
+</ul>

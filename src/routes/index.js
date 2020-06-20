@@ -1,16 +1,26 @@
-const { Read } = require('../db')
-
+const { Read, Update } = require('../db')
+const { ObjectId } = require('mongodb')
 const getIndex = async (req, res) => {
 	const query = req.body || {}
+	const loggedInUser = req.session.user
+	const votedUsers = [...loggedInUser.liked, ...loggedInUser.disliked].map((id) => ObjectId(id))
+
+	res.cookie('user', loggedInUser)
 
 	const users = await Read({
 		collection: 'users',
-		query: query,
+		query: {
+			...query,
+			_id: {
+				$nin: votedUsers,
+			},
+		},
 	})
 
 	res.status(200).render('index', {
 		users,
-		title: 'Dating App',
+		user: loggedInUser,
+		title: 'Home',
 	})
 }
 
@@ -20,22 +30,27 @@ const postIndex = async (req, res) => {
 		return
 	}
 
-	const response = req.body
-	const age = parseInt(response.age)
-	const orientation = response.orientation
-
+	const user = req.cookies.user
+	// Search Functionality
+	const searchQuery = req.body
+	searchQuery.age = parseInt(searchQuery.age)
 	const query = {
 		$and: [
-			{
-				age: {
-					$lte: age,
+			user.liked && {
+				_id: {
+					$nin: [...req.session.user.liked],
 				},
 			},
-			orientation === 'x'
+			{
+				age: {
+					$lte: searchQuery.age,
+				},
+			},
+			searchQuery.orientation === 'x'
 				? {}
 				: {
 						gender: {
-							$eq: orientation,
+							$eq: searchQuery.orientation,
 						},
 				  },
 		],
@@ -48,6 +63,10 @@ const postIndex = async (req, res) => {
 
 	res.status(200).render('index', {
 		users,
+		user,
 	})
 }
-module.exports = { getIndex, postIndex }
+module.exports = {
+	getIndex,
+	postIndex,
+}

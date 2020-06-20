@@ -2,6 +2,8 @@ const router = require('express').Router()
 
 const { getIndex, postIndex } = require('./routes/index')
 const { getLogin, postLogin } = require('./routes/login')
+const { getMatch, postMatch } = require('./routes/match')
+const { getMatches } = require('./routes/matches')
 const { getSignup, postSignup } = require('./routes/signup')
 const { getProfilePage, postProfilePage } = require('./routes/profile')
 const { postAdd } = require('./routes/add')
@@ -17,13 +19,16 @@ function validateSession(req, res, next) {
 
 router
 	.get('/', validateSession, getIndex)
-	.get ('/profile-page', validateSession, getProfilePage)
+	.post('/', postIndex)
+	.get('/profile-page', validateSession, getProfilePage)
 	.post('/profile-page', postProfilePage)
 	.get('/login', getLogin)
 	.post('/login', postLogin)
 	.get('/signup', getSignup)
+	.get('/match/*', validateSession, getMatch)
+	.get('/matches/', validateSession, getMatches)
+	.post('/match/:userId/', validateSession, postMatch)
 	.post('/signup', postSignup)
-	.post('/', postIndex)
 	.post('/add', postAdd)
 	.post('/logout', postLogout)
 

@@ -1,6 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+	<%- include ("./partials/head") %>
 
+<<<<<<< HEAD
+	<body>
+		<main>
+			<h1>Hello <%= user.firstName %> <%= user.lastName %></h1>
+			<ul>
+				<% users.forEach(user => { %>
+				<li><%- user.name %></li>
+				<% }) %>
+			</ul>
+
+			<form action="/logout" method="POST">
+				<button type="submit">Logout</button>
+			</form>
+			<a href="/matches">Link naar matches</a>
+		</main>
+
+		<%- include ('./partials/filter') %><%- include ('./partials/match', { users }) %>
+	</body>
+=======
   <%- include ("./partials/head") %>
 
   <body>
@@ -22,4 +42,5 @@
     </main>
 		<%- include ("./partials/filter") %>
   </body>
+>>>>>>> develop
 </html>
