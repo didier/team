@@ -1,6 +1,6 @@
 const { Read } = require('../db')
 const bcrypt = require('bcrypt')
-
+const { genders } = require('./profile')
 const getLogin = (req, res) => {
 	res.status(200).render('login', {
 		title: 'Login',

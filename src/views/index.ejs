@@ -3,25 +3,21 @@
   <%- include ("./partials/head") %>
 
   <body>
+    <%- include ("./partials/navigation") %>
+
     <main class="container-lg">
-      <h1>Dating App</h1>
-      <details>
-        <summary>
-          Filter
-        </summary>
-        <%- include ("./partials/filter") %>
-      </details>
 
+			<%- include ("./partials/filter") %>
 
+      <form action="/logout" method="POST" class="log-out">
+        <button type="submit">Log out</button>
+      </form>
 
-			<a href="/profile-page">View profile</a>
-      <form action="/logout" method="POST">
-        <button type="submit">Logout</button>
-			</form>
-			<a href="/matches">Link naar matches</a>
+      <%- include ('./partials/match', { users }) %>
+		</main>
 
-		<%- include ('./partials/match', { users }) %>
-
-    </main>
+		<footer class="breadcrumb">
+			<p>&copy; Team 2, 2020</p>
+		</footer>
   </body>
 </html>

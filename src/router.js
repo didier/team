@@ -5,9 +5,9 @@ const { getLogin, postLogin } = require('./routes/login')
 const { getMatch, postMatch } = require('./routes/match')
 const { getMatches } = require('./routes/matches')
 const { getSignup, postSignup } = require('./routes/signup')
-const { getProfilePage, postProfilePage } = require('./routes/profile')
+const { getProfile, postProfile } = require('./routes/profile')
 const { postAdd } = require('./routes/add')
-const { postLogout } = require('./routes/logout')
+const { logout } = require('./routes/logout')
 const { getChat } = require('./routes/chat')
 
 
@@ -22,8 +22,8 @@ function validateSession(req, res, next) {
 router
 	.get('/', validateSession, getIndex)
 	.post('/', postIndex)
-	.get('/profile-page', validateSession, getProfilePage)
-	.post('/profile-page', postProfilePage)
+	.get('/profile', validateSession, getProfile)
+	.post('/profile', postProfile)
 	.get('/login', getLogin)
 	.post('/login', postLogin)
 	.get('/signup', getSignup)
@@ -32,7 +32,8 @@ router
 	.post('/match/:userId/', validateSession, postMatch)
 	.post('/signup', postSignup)
 	.post('/add', postAdd)
-	.post('/logout', postLogout)
+	.get('/logout', logout)
+	.post('/logout', logout)
 	.get('/chat', getChat)
 	.get('/chat/:userId', validateSession, getChat)
 

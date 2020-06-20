@@ -1,6 +1,6 @@
-const postLogout = (req, res) => {
+const logout = (req, res) => {
 	req.session.destroy()
 	res.redirect('/login')
 }
 
-module.exports = { postLogout }
+module.exports = { logout }
