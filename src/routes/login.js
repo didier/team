@@ -1,6 +1,6 @@
 const { Read } = require('../db')
 const bcrypt = require('bcrypt')
-
+const { genders } = require('./profile')
 const getLogin = (req, res) => {
 	res.status(200).render('login', {
 		title: 'Login',
@@ -20,8 +20,11 @@ const postLogin = async (req, res) => {
 	})
 
 	req.session.user = { ...results[0] }
-	// console.log('Session-data:')
-	// console.log(req.session.user)
+
+	if (process.env.NODE_ENV === 'debug') {
+		console.log('Session-data:')
+		console.log(req.session.user)
+	}
 
 	if (results.length === 0) {
 		res.render('login', {
@@ -32,7 +35,9 @@ const postLogin = async (req, res) => {
 	}
 
 	bcrypt.compare(data.pass, results[0].pass, (err, result) => {
-		// console.log('Results:', result)
+		if (process.env.NODE_ENV === 'debug') {
+			console.log('Results:', result)
+		}
 
 		if (err) {
 			throw err

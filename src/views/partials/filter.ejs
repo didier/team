@@ -1,43 +1,27 @@
-<aside class="filter">
-	<h2>This is the filter</h2>
+<details>
+	<summary>
+		<!-- Icon from https://github.com/refactoringui/heroicons -->
+		<svg fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M3 3a1 1 0 011-1h12a1 1 0 011 1v3a1 1 0 01-.293.707L12 11.414V15a1 1 0 01-.293.707l-2 2A1 1 0 018 17v-5.586L3.293 6.707A1 1 0 013 6V3z" clip-rule="evenodd"></path></svg>
+		Filter
+	</summary>
+	<aside class="filter">
+  <form action="/" method="POST">
+    <fieldset>
+      <label for="age">Max Age</label>
+      <br />
+      <input type="number" name="age" id="age" min="18" max="100" value="24" />
+    </fieldset>
 
-		<form action="/" method="POST">
+    <fieldset>
+			<label for="orientation">I'm looking for...</label>
+			<select name="orientation" id="orientation">
+				<option value="m">Men</option>
+				<option value="f">Women</option>
+				<option value="x">Both</option>
+			</select>
+    </fieldset>
 
-			<fieldset>
-				<legend>Maximum age</legend>
-				<label for="age">Age</label>
-				<br>
-				<input type="number" name="age" id="age" min="18" max="100" value="24">
-			</fieldset>
-
-			<fieldset>
-				<legend>I'm looking for</legend>
-				<input type="radio" id="male" name="orientation" value="m">
-				<label for="male">Male</label>
-				<br>
-				<input type="radio" id="female" checked name="orientation" value="f">
-				<label for="female">Female</label>
-
-				<input type="radio" id="both" checked name="orientation" value="x">
-				<label for="both">Both</label>
-			</fieldset>
-
-			<button type="submit">Filter</button>
-
-		</form>
+    <button type="submit">Filter</button>
+  </form>
 </aside>
-
-
-<style>
-	aside.filter{
-		max-width: 30vw;
-		height: 50vh;
-		position: absolute;
-		right: 50vw;
-		top: 0;
-	}
-
-	aside input{
-		margin: 10px 0px;
-	}
-</style>
+</details>

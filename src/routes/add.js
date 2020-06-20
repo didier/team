@@ -4,7 +4,10 @@ const postAdd = async (req, res) => {
 	const data = req.body
 
 	if (data) {
-		console.log(data)
+
+		if (process.env.NODE_ENV === 'debug') {
+			console.log(data)
+		}
 	}
 
 	await Create({

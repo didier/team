@@ -66,7 +66,5 @@ const postIndex = async (req, res) => {
 		user,
 	})
 }
-module.exports = {
-	getIndex,
-	postIndex,
-}
+
+module.exports = { getIndex, postIndex }
