@@ -6,13 +6,17 @@
 
 	<main class="container-lg">
 		<% if (locals.signUp) { %>
+			<h1>Welcome to Blind</h1>
+			<p>Blind is a dating app for people that want to find love based on personality, rather than on looks.</p>
+
+
 			<form action="/signup" method="POST">
 				<fieldset>
-					<h1>Create Account</h1>
+					<h2>Create Account</h2>
 				<% } else { %>
 					<form action="/login" method="POST">
 					<fieldset>
-						<h1>Log In</h1>
+						<h2>Log In</h2>
 					<% } %>
 						<label for="email">E-mail</label>
 						<input required type="email" name="email" id="email" placeholder="your@email.com">
