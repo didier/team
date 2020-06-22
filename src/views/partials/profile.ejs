@@ -31,13 +31,13 @@
       <% }%> <% }) %>
     </select>
   </fieldset>
-
+	<br>
   <fieldset>
     <h2>Please tell us something about yourself.</h2>
     <label for="bio">Bio</label>
     <textarea name="bio" id="bio" cols="30" rows="3"><%= user.bio %></textarea>
   </fieldset>
-
+	<br>
   <fieldset class="interests">
     <h2>What are some of your interests?</h2>
     <label for="interest">I like</label>
@@ -60,5 +60,5 @@
       value="<%= user.interest[2] %>"
     />
   </fieldset>
-  <input type="submit" value="save" class="profile-form-button" />
+  <button type="submit">Save</button>
 </form>

@@ -1,4 +1,4 @@
-# Dating App
+# Blind — Modern Blind Dating
 
 _A dating app assignment for @cmda-bt Blok Tech with [@max-hauser](https://github.com/max-hauser), [@sybrenmolenaar](https://github.com/sybrenmolenaar), [@zoeseveriens](https://github.com/zoeseveriens) and [@didiercatz](https://github.com/didiercatz)_
 
@@ -22,6 +22,11 @@ $ npm run start # or yarn start
 
 ```bash
 $ npm run dev # or yarn dev
+```
+## Running the server in debug mode
+This mode logs extra information to the console everytime a CRUD operation is performed.
+```bash
+$ npm run debug # or yarn debug
 ```
 
 ## Generating documentation with JSDoc
@@ -51,4 +56,8 @@ ESLint is a JavaScript (EcmaScript) linter that shows you errors as you write yo
 
 ### Prettier
 
-Prettier is a formatter for HTML, CSS and JS that automatically makes your code -- well -- prettier. It formats based on your settings for indentation, bracket location, semicolons, etc. It's configured to listen to ESLint's config as well.
+Prettier is a formatter for HTML, CSS and JS that automatically makes your code, well, prettier. It formats based on your settings for indentation, bracket location, semicolons, etc. It's configured to listen to ESLint's config as well.
+
+
+## Sources
+- https://github.com/refactoringui/heroicons by Steve Schoger & Adam Wathan

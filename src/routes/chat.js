@@ -5,6 +5,7 @@ const { ObjectId } = require('mongodb')
 
 const getChat = async (req, res) => {
 
+
 	const user = await Read({
 		collection: 'users',
 		query: {
@@ -24,7 +25,7 @@ const getChat = async (req, res) => {
 	console.log(chatData);
 
 
-	if (chatData.length === 0) {
+	if (chatData.length === []) {
 		await Create({
 			collection: 'chats',
 			data: {
