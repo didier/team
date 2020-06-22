@@ -21,7 +21,7 @@ app
 
 
 const server = app.listen(port, () => {
-	console.log(`App is running at ${port}`)
+	console.log(`App is running at https://localhost:${port}`)
 	console.log('—————————————————————————————————————————————————————————')
 })
 
