@@ -17,10 +17,13 @@ socket.on('connect', () => {
 	console.log('CLIENT roomId:', roomId)
 	socket.emit('joined', roomId)
 
-	socket.on('user online', (status) =>
+	socket.on('user online', ({ status }) => {
+		console.log('user online detected!')
 		status === true
 			? statusIndicator.classList.add('active')
 			: statusIndicator.classList.remove('active')
+	}
+
 	)
 
 	// Listen for submit events
@@ -72,13 +75,14 @@ socket.on('connect', () => {
 	// Recieve type events
 	socket.on('user typing', (message) => {
 		console.log('participant is typing')
-		if (!document.querySelector('.typing')) {
+
+		if (typeIndicator.classList.contains('active')) {
+
+		} else {
 			typeIndicator.classList.add('active')
 			setTimeout(() => {
 				typeIndicator.classList.remove('active')
 			}, 2000);
-		} else {
-			typeIndicator.classList.remove('active')
 		}
 	})
 
@@ -101,7 +105,10 @@ socket.on('connect', () => {
 		} else {
 			typeIndicator.classList.remove('active')
 			chatWindow.appendChild(newMessage)
-			newMessage.classList.add('active')
+			setTimeout(() => {
+				newMessage.classList.add('active')
+			}, 10)
+
 		}
 
 		setTimeout(() => window.scrollTo(0, document.body.scrollHeight), 200)
