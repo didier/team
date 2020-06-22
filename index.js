@@ -7,7 +7,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const router = require('./src/router')
 
-const { PORT, NODE_ENV, SESSION_SECRET } = process.env
+const { PORT, SESSION_SECRET } = process.env
 const port = PORT || 3000
 
 app
@@ -21,7 +21,7 @@ app
 
 
 const server = app.listen(port, () => {
-	console.log(`App is running in ${NODE_ENV} mode on http://localhost:${port}`)
+	console.log(`App is running at ${port}`)
 	console.log('—————————————————————————————————————————————————————————')
 })
 
