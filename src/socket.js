@@ -5,14 +5,18 @@ module.exports = io => {
 	// Fires when a user connects
 	io.on('connection', (socket) => {
 		// Fires when a user disconnects
+		socket.broadcast.emit('user online', { status: true })
 		socket.on('disconnect', () => {
 			console.log('user disconnected')
+			socket.broadcast.emit('user online', { status: false })
 		})
 
 		// Fires when a user joins the chat
 		socket.on('joined', roomId => {
 			// send user to their respective `roomId`
 			socket.join(roomId)
+			console.log('user online');
+
 			console.log(`you're now in room ${roomId}`)
 		})
 
