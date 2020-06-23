@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+  <link rel="stylesheet" href="/css/style.css" />
+		<noscript>
+			<meta http-equiv="refresh" content="5">
+		</noscript>
+	</head>
+
+  <body class="chat-frame">
+
+      <ul class="chat-window container-lg">
+				<% chats.forEach(chat => { %>
+					<% if (chat.userId === loggedInUser._id) { %>
+						<li class="chat-message sent active"><p><%= chat.message %></p></li>
+					<% } else { %>
+						<li class="chat-message received active"><p><%= chat.message %></p></li>
+					<% } %>
+				<% }) %>
+			<ul>
+
+				<input
+          type="hidden"
+          id="user-id"
+          name="userId"
+          value="<%= loggedInUser._id %>"
+        />
+    <script defer src="/socket.io/socket.io.js"></script>
+    <script defer src="/js/chat-frame.js"></script>
+  </body>
+</html>

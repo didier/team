@@ -8,7 +8,7 @@ const { getSignup, postSignup } = require('./routes/signup')
 const { getProfile, postProfile } = require('./routes/profile')
 const { postAdd } = require('./routes/add')
 const { logout } = require('./routes/logout')
-const { getChat } = require('./routes/chat')
+const { postChat, getChat, getChatFrame } = require('./routes/chat')
 
 
 function validateSession(req, res, next) {
@@ -36,5 +36,7 @@ router
 	.post('/logout', logout)
 	.get('/chat', getChat)
 	.get('/chat/:userId', validateSession, getChat)
+	.get('/chat/frame/:userId', validateSession, getChatFrame)
+	.post('/chat/:userId', validateSession, postChat)
 
 module.exports = router

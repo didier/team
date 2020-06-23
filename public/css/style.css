@@ -183,12 +183,43 @@ article.user .button-group {
   justify-content: center;
 }
 
+.chat {
+  overflow: hidden;
+}
+
 .chat-window {
   background: var(--gray-100);
   display: flex;
   flex-direction: column;
   padding-top: 80px;
   padding-bottom: 16px;
+}
+
+.chat-view {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chat-view iframe {
+  width: 100%;
+  height: 90vh;
+
+  /* height: 100%; */
+
+  /* margin: 0 auto; */
+}
+
+.chat-form {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+}
+
+.chat-form button {
+  border: none;
 }
 
 .chat-window .chat-message {
@@ -200,6 +231,10 @@ article.user .button-group {
   transform: scale(0);
   transition-delay: .5s;
   align-self: flex-end;
+}
+
+.chat-window .chat-message span {
+  display: none;
 }
 
 .chat-window .chat-message p {
@@ -528,4 +563,5 @@ body > .breadcrumb {
   .chat .breadcrumb span {
     display: none;
   }
+}
 }
