@@ -77,7 +77,7 @@ const getChatFrame = async (req, res) => {
 const postChat = async (req, res) => {
 	try {
 		console.log(req.body)
-		const { message, roomId, userId, participantId } = req.body
+		const { message, roomId, userId, participantId, userName } = req.body
 
 		const chats = await Read({
 			collection: 'chats',

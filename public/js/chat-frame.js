@@ -13,11 +13,11 @@ socket.on('connect', () => {
 		console.log('frame received data');
 
 		console.log('frame:', data)
-		const { userId, message, roomId, participantId, participantName } = data
+		const { userId, userName, message, roomId, participantId, participantName } = data
 		// Render chat to the DOM
 		// console.log
 		if (userId === loggedInUserId) {
-			renderChat('sent', message, participantName)
+			renderChat('sent', message, userName)
 		} else {
 			renderChat('received', message, participantName)
 		}
