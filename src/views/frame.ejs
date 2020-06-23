@@ -12,9 +12,13 @@
       <ul class="chat-window container-lg">
 				<% chats.forEach(chat => { %>
 					<% if (chat.userId === loggedInUser._id) { %>
-						<li class="chat-message sent active"><p><%= chat.message %></p></li>
+						 <li class="chat-message sent active">
+          		<p><span><%= loggedInUser.firstName %>: </span><%= chat.message %></p>
+        </li>
 					<% } else { %>
-						<li class="chat-message received active"><p><%= chat.message %></p></li>
+						<li class="chat-message received active">
+						<p><span><%= user.firstName %>: </span><%= chat.message %></p>
+					</li>
 					<% } %>
 				<% }) %>
 			<ul>
